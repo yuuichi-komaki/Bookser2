@@ -1,0 +1,37 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-8 mx-auto">
+<h2>User info</h2>
+ <% if @user.errors.any? %>
+        <%= @user.errors.count %>error prohibited this book from being saved:
+        <% @user.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+
+  <%= form_with model:@user, local:true do |f| %>
+
+  <div>
+    <p>Name</p>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <p>Image</p>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  </div>
+
+  <div>
+    <P>Introduction</P>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <div>
+    <%= f.submit "Update User" %>
+  </div>
+  </div>
+   </div>
+  </div>
+
+
+  <% end %>
